@@ -33,8 +33,8 @@ async def read_movies(
     movies = page_data.items
 
     base_path = "/api/v1/theater/movies/"
-    prev_page = None if page <= 1 else f"{base_path}?page={page - 1}&per_page={per_page}"
-    next_page = None if page >= total_pages else f"{base_path}?page={page + 1}&per_page={per_page}"
+    prev_page = 1 if page <= 1 else f"{base_path}?page={page - 1}&per_page={per_page}"
+    next_page = total_pages if page >= total_pages else f"{base_path}?page={page + 1}&per_page={per_page}"
 
     return {
         "movies": movies,
